@@ -7,7 +7,7 @@ export type ObjOption = { type: TypeOption };
 export type Options = TypeOption | ObjOption;
 
 async function toArrayBuffer(file: TargetFile) {
-  await new Promise((resolve, reject) => {
+  return await new Promise((resolve, reject) => {
     const fileReader = new FileReader();
     fileReader.onload = resolve;
     fileReader.onerror = reject;
