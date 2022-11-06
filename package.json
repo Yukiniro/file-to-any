@@ -1,0 +1,51 @@
+{
+  "name": "file-to-any",
+  "version": "0.0.1",
+  "description": "Convert file to arraybuffer, text and more",
+  "main": "dist/file-to-any.cjs",
+  "module": "dist/file-to-any.mjs",
+  "types": "dist/src/index.d.ts",
+  "scripts": {
+    "build": "rollup -c rollup.config.mjs",
+    "lint": "npx eslint src/**",
+    "prettier": "npx prettier src/** --write && npx prettier __test__/** --write",
+    "test": "npx vitest",
+    "test:run": "npx vitest run",
+    "test:coverrage": "npx vitest --coverage",
+    "publish": "npm run test:run && npm run build && npm publish",
+    "prepare": "npx husky install"
+  },
+  "keywords": [
+    "file",
+    "arraybuffer"
+  ],
+  "author": "Yukiniro",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yukiniro/ssprojet"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/plugin-transform-modules-commonjs": "^7.17.7",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-typescript": "^8.3.1",
+    "@yukiniro/eslint-config": "^0.0.3",
+    "eslint": "^8.11.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.6.0",
+    "prettier-eslint": "^13.0.0",
+    "rollup": "^3.2.2",
+    "rollup-plugin-filesize": "^9.1.2",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.31.2",
+    "tslib": "^2.3.1",
+    "typescript": "^4.6.4",
+    "vitest": "^0.24.3"
+  }
+}
