@@ -1,12 +1,12 @@
 import { isString, isUndefined } from "bittydash";
 
 export type TargetFile = File | Blob;
-export type TypeOption = "arrayBuffer";
+export type TypeOption = "arrayBuffer" | "dataUrl" | "text";
 export type ObjOption = { type: TypeOption };
 
 export type Options = TypeOption | ObjOption;
 
-async function toArrayBuffer(file: TargetFile) {
+async function toTarget(file: TargetFile, type: TypeOption) {
   return await new Promise((resolve, reject) => {
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
@@ -14,8 +14,32 @@ async function toArrayBuffer(file: TargetFile) {
     };
     fileReader.onerror = reject;
     fileReader.onabort = reject;
-    fileReader.readAsArrayBuffer(file);
+    switch (type) {
+      case "arrayBuffer":
+        fileReader.readAsArrayBuffer(file);
+        break;
+      case "dataUrl":
+        fileReader.readAsDataURL(file);
+        break;
+      case "text":
+        fileReader.readAsText(file);
+        break;
+      default:
+        reject(new Error("Type is invalid"));
+    }
   });
+}
+
+async function toArrayBuffer(file: TargetFile) {
+  return await toTarget(file, "arrayBuffer");
+}
+
+async function toDataUrl(file: TargetFile) {
+  return await toTarget(file, "dataUrl");
+}
+
+async function toText(file: TargetFile) {
+  return await toTarget(file, "text");
 }
 
 async function toAny(file: TargetFile, options?: Options) {
@@ -24,12 +48,7 @@ async function toAny(file: TargetFile, options?: Options) {
     : isString(options)
     ? options
     : (options as ObjOption).type;
-
-  if (type === "arrayBuffer") {
-    return toArrayBuffer(file);
-  }
-
-  throw new Error("Convert type is invalid");
+  return await toTarget(file, type as unknown as TypeOption);
 }
 
-export { toAny };
+export { toArrayBuffer, toDataUrl, toText, toAny };

@@ -1,21 +1,30 @@
-# ssprojet
+# file-to-any
 
-![NPM](https://img.shields.io/npm/l/ssprojet?color=blue&style=flat-square) ![npm](https://img.shields.io/npm/v/ssprojet?color=blue&style=flat-square)
+![NPM](https://img.shields.io/npm/l/file-to-any?color=blue&style=flat-square) ![npm](https://img.shields.io/npm/v/file-to-any?color=blue&style=flat-square)
 
-The `ssprojet` is a template to start a simple project.
+The `file-to-any` is a tiny library that could convert file to arraybuffer, dataUrl and text
 
-## Features
+## Intall
 
-- `pnpm` - package manager
-- `vitest` - test library
-- `docusaurus` - document library
-- `prettier` - code style formate
-- `eslint` - code quality
-- `husky` - pre-commit
-- `lint-staged` - auto lint for staged files
+```shell
+npm i file-to-any -S
+```
 
-## How to use
+or
 
-You could use `degit Yukiniro/ssprojet your-project-name` to create a project.
+```shell
+pnpm add file-to-any -S
+```
 
-If you have no `degit`. Please install it by `npm install -g degit`.
+## Useage
+
+Here is a simple [demo](https://react-ts-dsbxwk.stackblitz.io).
+
+```javascript
+import { toAny } from "file-to-any";
+
+// You can get file by input tag with type that is file
+toAny(file, "arrayBuffer").then((value) => {
+  console.log(value); // value is a arrayBuffer
+});
+```

@@ -1,7 +1,7 @@
 {
   "name": "file-to-any",
-  "version": "0.0.4",
-  "description": "Convert file to arraybuffer, text and more",
+  "version": "1.0.0",
+  "description": "Convert file to arraybuffer, dataUrl and text",
   "main": "dist/file-to-any.cjs",
   "module": "dist/file-to-any.mjs",
   "types": "dist/src/index.d.ts",
@@ -17,7 +17,9 @@
   },
   "keywords": [
     "file",
-    "arraybuffer"
+    "arraybuffer",
+    "dataUrl",
+    "string"
   ],
   "author": "Yukiniro",
   "license": "MIT",
@@ -48,6 +50,7 @@
     "rollup-plugin-typescript2": "^0.31.2",
     "tslib": "^2.3.1",
     "typescript": "^4.6.4",
+    "valid-data-url": "^4.0.1",
     "vitest": "^0.24.3"
   }
 }
