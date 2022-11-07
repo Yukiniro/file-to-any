@@ -28,3 +28,43 @@ toAny(file, "arrayBuffer").then((value) => {
   console.log(value); // value is a arrayBuffer
 });
 ```
+
+## API
+
+### toAny
+
+The all-purpose api to convert file to others.
+
+- Params
+  - `file` **Blob | File** The file to convert.
+  - `options` **"arrayBuffer" | "dataUrl" | "text" | object**
+    - `options.type` **"arrayBuffer" | "dataUrl" | "text"**
+- Returns
+  - `Promise<any>` Returns the associated result according to the specified parameter.
+
+### toArrayBuffer
+
+Convert file to [arrayBuffer](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer).
+
+- Params
+  - `file` **Blob | File** The file to convert.
+  - Returns
+    - `Promise<ArrayBuffer>` Returns a arrayBuffer.
+
+### toDataUrl
+
+Convert file to [dataUrl](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basics_of_HTTP/Data_URLs).
+
+- Params
+  - `file` **Blob | File** The file to convert.
+  - Returns
+    - `Promise<string>` Returns a dataUrl.
+
+### toText
+
+Convert file to string.
+
+- Params
+  - `file` **Blob | File** The file to convert.
+  - Returns
+    - `Promise<string>` Returns a string.
