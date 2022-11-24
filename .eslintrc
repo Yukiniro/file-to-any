@@ -1,5 +1,6 @@
 {
-  "extends": [
-    "@yukiniro/eslint-config"
-  ]
+  "extends": ["@yukiniro/eslint-config"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "env": { "browser": true }
 }
