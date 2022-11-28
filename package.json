@@ -1,6 +1,6 @@
 {
   "name": "file-to-any",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Convert file to arraybuffer, dataUrl and text",
   "main": "dist/file-to-any.cjs",
   "module": "dist/file-to-any.mjs",
