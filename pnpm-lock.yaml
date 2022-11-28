@@ -8,7 +8,7 @@ specifiers:
   '@rollup/plugin-babel': ^5.3.1
   '@rollup/plugin-commonjs': ^22.0.0
   '@rollup/plugin-node-resolve': ^13.3.0
-  '@rollup/plugin-typescript': ^8.3.1
+  '@rollup/plugin-typescript': ^10.0.0
   '@types/dom-parser': ^0.1.1
   '@typescript-eslint/eslint-plugin': ^5.44.0
   '@typescript-eslint/parser': ^5.44.0
@@ -37,7 +37,7 @@ devDependencies:
   '@rollup/plugin-babel': 5.3.1_mmsetfr7cg56acop45wklucl3u
   '@rollup/plugin-commonjs': 22.0.0_rollup@3.2.2
   '@rollup/plugin-node-resolve': 13.3.0_rollup@3.2.2
-  '@rollup/plugin-typescript': 8.3.1_aikc73ixwba7pg6tqndq3iefzm
+  '@rollup/plugin-typescript': 10.0.1_aikc73ixwba7pg6tqndq3iefzm
   '@types/dom-parser': 0.1.1
   '@typescript-eslint/eslint-plugin': 5.44.0_puuowujuu5honsq533py5x6rb4
   '@typescript-eslint/parser': 5.44.0_6yfeyf2tpgcgq3vylrzckydsyu
@@ -1463,16 +1463,21 @@ packages:
       rollup: 3.2.2
     dev: true
 
-  /@rollup/plugin-typescript/8.3.1_aikc73ixwba7pg6tqndq3iefzm:
-    resolution: {integrity: sha512-84rExe3ICUBXzqNX48WZV2Jp3OddjTMX97O2Py6D1KJaGSwWp0mDHXj+bCGNJqWHIEKDIT2U0sDjhP4czKi6cA==}
-    engines: {node: '>=8.0.0'}
+  /@rollup/plugin-typescript/10.0.1_aikc73ixwba7pg6tqndq3iefzm:
+    resolution: {integrity: sha512-wBykxRLlX7EzL8BmUqMqk5zpx2onnmRMSw/l9M1sVfkJvdwfxogZQVNUM9gVMJbjRLDR5H6U0OMOrlDGmIV45A==}
+    engines: {node: '>=14.0.0'}
     peerDependencies:
-      rollup: ^2.14.0
+      rollup: ^2.14.0||^3.0.0
       tslib: '*'
       typescript: '>=3.7.0'
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+      tslib:
+        optional: true
     dependencies:
-      '@rollup/pluginutils': 3.1.0_rollup@3.2.2
-      resolve: 1.22.0
+      '@rollup/pluginutils': 5.0.2_rollup@3.2.2
+      resolve: 1.22.1
       rollup: 3.2.2
       tslib: 2.3.1
       typescript: 4.6.4
@@ -1496,6 +1501,21 @@ packages:
     dependencies:
       estree-walker: 2.0.2
       picomatch: 2.3.1
+    dev: true
+
+  /@rollup/pluginutils/5.0.2_rollup@3.2.2:
+    resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      '@types/estree': 1.0.0
+      estree-walker: 2.0.2
+      picomatch: 2.3.1
+      rollup: 3.2.2
     dev: true
 
   /@tootallnate/once/1.1.2:
@@ -1529,6 +1549,10 @@ packages:
 
   /@types/estree/0.0.39:
     resolution: {integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==}
+    dev: true
+
+  /@types/estree/1.0.0:
+    resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
 
   /@types/form-data/0.0.33:
