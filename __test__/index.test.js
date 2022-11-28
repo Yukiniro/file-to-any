@@ -1,10 +1,10 @@
-import { isString } from "bittydash";
 import { isArrayBuffer } from "bittydash";
 import validDataUrl from "valid-data-url";
 import { describe } from "vitest";
 import { test, expect } from "vitest";
 import { toAny, toArrayBuffer, toDataUrl, toText } from "../src/index";
 const file = new File([], "test.mp3", { type: "audio/mpeg" });
+const textFile = new File(["hello world"], "hello.txt", { type: "txt" });
 
 describe("toAny", () => {
   test("arrayBuffer", async () => {
@@ -23,8 +23,8 @@ describe("toAny", () => {
   });
 
   test("text", async () => {
-    const str = await toAny(file, "text");
-    expect(isString(str)).toBe(true);
+    const str = await toAny(textFile, "text");
+    expect(str).toBe("hello world");
   });
 });
 
@@ -34,11 +34,11 @@ test("toArrayBuffer", async () => {
 });
 
 test("toDataUrl", async () => {
-  const buffer = await toDataUrl(file);
-  expect(validDataUrl(buffer)).toBe(true);
+  const url = await toDataUrl(file);
+  expect(validDataUrl(url)).toBe(true);
 });
 
 test("toText", async () => {
-  const buffer = await toText(file);
-  expect(isString(buffer)).toBe(true);
+  const str = await toText(textFile);
+  expect(str).toBe("hello world");
 });
