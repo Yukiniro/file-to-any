@@ -13,7 +13,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.44.0
   '@typescript-eslint/parser': ^5.44.0
   '@yukiniro/eslint-config': ^0.0.6
-  bittydash: ^0.3.1
+  bittydash: ^0.4.0
   eslint: ^8.11.0
   happy-dom: ^8.0.0
   husky: ^8.0.1
@@ -42,7 +42,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.44.0_puuowujuu5honsq533py5x6rb4
   '@typescript-eslint/parser': 5.44.0_6yfeyf2tpgcgq3vylrzckydsyu
   '@yukiniro/eslint-config': 0.0.6
-  bittydash: 0.3.1
+  bittydash: 0.4.3
   eslint: 8.11.0
   happy-dom: 8.1.0
   husky: 8.0.1
@@ -2069,8 +2069,8 @@ packages:
       tweetnacl: 0.14.5
     dev: true
 
-  /bittydash/0.3.1:
-    resolution: {integrity: sha512-yIXfP0S44/3dr7Kae53S7VxudLCkFdkMnL+DhAEnnr3FsXg47XT383B/4wxbz0jw/kyv2tge8d+vHYYN4mdfBg==}
+  /bittydash/0.4.3:
+    resolution: {integrity: sha512-08Bw8PiCy7zXXEM+X9H4nAzIAHaaXPn8c51y/W8egRp7lDVQTId0I2tgos0O8pvKwPGPcAZwXojmEwthQOdBNQ==}
     dev: true
 
   /boxen/5.1.2:
