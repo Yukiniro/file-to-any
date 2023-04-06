@@ -1,7 +1,6 @@
 import { isArrayBuffer } from "bittydash";
 import validDataUrl from "valid-data-url";
-import { describe } from "vitest";
-import { test, expect } from "vitest";
+import { describe, test, expect } from "vitest";
 import { toAny, toArrayBuffer, toDataUrl, toText } from "../src/index";
 const file = new File([], "test.mp3", { type: "audio/mpeg" });
 const textFile = new File(["hello world"], "hello.txt", { type: "txt" });
