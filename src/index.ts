@@ -6,7 +6,7 @@ export type ObjOption = { type: TypeOption };
 
 export type Options = TypeOption | ObjOption;
 
-async function toTarget(
+async function transformWithFileReader(
   file: TargetFile,
   type: TypeOption
 ): Promise<string | ArrayBuffer> {
@@ -34,15 +34,18 @@ async function toTarget(
 }
 
 async function toArrayBuffer(file: TargetFile): Promise<ArrayBuffer> {
-  return (await toTarget(file, "arrayBuffer")) as ArrayBuffer;
+  if (file.arrayBuffer) {
+    return await file.arrayBuffer();
+  }
+  return (await transformWithFileReader(file, "arrayBuffer")) as ArrayBuffer;
 }
 
 async function toDataUrl(file: TargetFile): Promise<string> {
-  return (await toTarget(file, "dataUrl")) as string;
+  return (await transformWithFileReader(file, "dataUrl")) as string;
 }
 
 async function toText(file: TargetFile): Promise<string> {
-  return (await toTarget(file, "text")) as string;
+  return (await transformWithFileReader(file, "text")) as string;
 }
 
 async function toAny(file: TargetFile, options?: Options) {
@@ -51,7 +54,7 @@ async function toAny(file: TargetFile, options?: Options) {
     : isString(options)
     ? options
     : (options as ObjOption).type;
-  return await toTarget(file, type as unknown as TypeOption);
+  return await transformWithFileReader(file, type as unknown as TypeOption);
 }
 
 async function toBlob(file: TargetFile): Promise<Blob> {
