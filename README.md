@@ -39,8 +39,18 @@ The all-purpose api to convert file to others.
   - `file` **Blob | File** The file to convert.
   - `options` **"arrayBuffer" | "dataUrl" | "text" | object**
     - `options.type` **"arrayBuffer" | "dataUrl" | "text"**
+    - `options.encoding` **"string" | undefined** _Only used for "text"_
 - Returns
   - `Promise<any>` Returns the associated result according to the specified parameter.
+
+### toBinaryString
+
+Convert file to binaryString.
+
+- Params
+  - `file` **Blob | File** The file to convert.
+  - Returns
+    - `Promise<string>` Returns a binaryString.
 
 ### toArrayBuffer
 
@@ -66,5 +76,6 @@ Convert file to string.
 
 - Params
   - `file` **Blob | File** The file to convert.
+  - `encoding` **"string" | undefined** Encoding type.
   - Returns
     - `Promise<string>` Returns a string.
