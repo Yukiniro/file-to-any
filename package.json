@@ -19,7 +19,9 @@
     "file",
     "arraybuffer",
     "dataUrl",
-    "string"
+    "string",
+    "blob",
+    "binaryString"
   ],
   "author": "Yukiniro",
   "license": "MIT",
