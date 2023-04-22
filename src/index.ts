@@ -1,14 +1,20 @@
-import { isString, isUndefined } from "bittydash";
+import { isString, isUndefined, isBlob } from "bittydash";
 
 export type TargetFile = File | Blob;
-export type TypeOption = "arrayBuffer" | "dataUrl" | "text";
-export type ObjOption = { type: TypeOption };
+export type TypeOption =
+  | "arrayBuffer"
+  | "dataUrl"
+  | "text"
+  | "binaryString"
+  | "blob";
+export type ObjOption = { type: TypeOption; encoding?: string };
 
 export type Options = TypeOption | ObjOption;
 
-async function toTarget(
+async function transformWithFileReader(
   file: TargetFile,
-  type: TypeOption
+  type: TypeOption,
+  encoding?: string
 ): Promise<string | ArrayBuffer> {
   return await new Promise((resolve, reject) => {
     const fileReader = new FileReader();
@@ -25,7 +31,10 @@ async function toTarget(
         fileReader.readAsDataURL(file);
         break;
       case "text":
-        fileReader.readAsText(file);
+        fileReader.readAsText(file, encoding);
+        break;
+      case "binaryString":
+        fileReader.readAsBinaryString(file);
         break;
       default:
         reject(new Error("Type is invalid"));
@@ -34,24 +43,53 @@ async function toTarget(
 }
 
 async function toArrayBuffer(file: TargetFile): Promise<ArrayBuffer> {
-  return (await toTarget(file, "arrayBuffer")) as ArrayBuffer;
+  if (file.arrayBuffer) {
+    return await file.arrayBuffer();
+  }
+  return (await transformWithFileReader(file, "arrayBuffer")) as ArrayBuffer;
+}
+
+async function toBinaryString(file: TargetFile): Promise<ArrayBuffer> {
+  return (await transformWithFileReader(file, "binaryString")) as ArrayBuffer;
 }
 
 async function toDataUrl(file: TargetFile): Promise<string> {
-  return (await toTarget(file, "dataUrl")) as string;
+  return (await transformWithFileReader(file, "dataUrl")) as string;
 }
 
-async function toText(file: TargetFile): Promise<string> {
-  return (await toTarget(file, "text")) as string;
+async function toText(file: TargetFile, encoding?: string): Promise<string> {
+  return (await transformWithFileReader(file, "text", encoding)) as string;
 }
 
-async function toAny(file: TargetFile, options?: Options) {
+async function toAny(file: TargetFile, options?: Options, encoding?: string) {
   const type = isUndefined(options)
     ? "arrayBuffer"
     : isString(options)
     ? options
     : (options as ObjOption).type;
-  return await toTarget(file, type as unknown as TypeOption);
+
+  const textEncoding = isUndefined(options)
+    ? undefined
+    : isString(options)
+    ? encoding
+    : (options as ObjOption).encoding;
+
+  if (type === "blob") {
+    return await toBlob(file);
+  }
+
+  return await transformWithFileReader(
+    file,
+    type as unknown as TypeOption,
+    textEncoding
+  );
 }
 
-export { toArrayBuffer, toDataUrl, toText, toAny };
+async function toBlob(file: TargetFile): Promise<Blob> {
+  if (isBlob(file)) {
+    return file;
+  }
+  return file.slice();
+}
+
+export { toArrayBuffer, toBinaryString, toDataUrl, toText, toBlob, toAny };
