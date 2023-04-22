@@ -1,7 +1,7 @@
-import { isArrayBuffer } from "bittydash";
+import { isArrayBuffer, isBlob } from "bittydash";
 import validDataUrl from "valid-data-url";
 import { describe, test, expect } from "vitest";
-import { toAny, toArrayBuffer, toDataUrl, toText } from "../src/index";
+import { toAny, toArrayBuffer, toDataUrl, toText, toBlob } from "../src/index";
 const file = new File([], "test.mp3", { type: "audio/mpeg" });
 const textFile = new File(["hello world"], "hello.txt", { type: "txt" });
 
@@ -40,4 +40,9 @@ test("toDataUrl", async () => {
 test("toText", async () => {
   const str = await toText(textFile);
   expect(str).toBe("hello world");
+});
+
+test("toBlob", async () => {
+  const newBlob = await toBlob(file);
+  expect(isBlob(newBlob)).toBe(true);
 });

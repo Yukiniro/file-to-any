@@ -1,4 +1,4 @@
-import { isString, isUndefined } from "bittydash";
+import { isString, isUndefined, isBlob } from "bittydash";
 
 export type TargetFile = File | Blob;
 export type TypeOption = "arrayBuffer" | "dataUrl" | "text";
@@ -54,4 +54,11 @@ async function toAny(file: TargetFile, options?: Options) {
   return await toTarget(file, type as unknown as TypeOption);
 }
 
-export { toArrayBuffer, toDataUrl, toText, toAny };
+async function toBlob(file: TargetFile): Promise<Blob> {
+  if (isBlob(file)) {
+    return file;
+  }
+  return file.slice();
+}
+
+export { toArrayBuffer, toDataUrl, toText, toBlob, toAny };
