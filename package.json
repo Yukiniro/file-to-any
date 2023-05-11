@@ -1,6 +1,6 @@
 {
   "name": "file-to-any",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Convert file to arraybuffer, dataUrl and text",
   "main": "dist/file-to-any.cjs",
   "module": "dist/file-to-any.mjs",
@@ -12,7 +12,7 @@
     "test": "npx vitest",
     "test:run": "npx vitest run",
     "test:coverrage": "npx vitest --coverage",
-    "publish": "npm run test:run && npm run build && npm publish",
+    "npm:publish": "npm run test:run && npm run build && npm publish",
     "prepare": "npx husky install"
   },
   "keywords": [
