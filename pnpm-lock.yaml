@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -21,8 +21,8 @@ devDependencies:
     specifier: ^5.3.1
     version: 5.3.1(@babel/core@7.21.4)(rollup@3.20.7)
   '@rollup/plugin-commonjs':
-    specifier: ^24.0.0
-    version: 24.0.1(rollup@3.20.7)
+    specifier: ^25.0.0
+    version: 25.0.0(rollup@3.20.7)
   '@rollup/plugin-node-resolve':
     specifier: ^15.0.0
     version: 15.0.2(rollup@3.20.7)
@@ -1774,8 +1774,8 @@ packages:
       rollup: 3.20.7
     dev: true
 
-  /@rollup/plugin-commonjs@24.0.1(rollup@3.20.7):
-    resolution: {integrity: sha512-15LsiWRZk4eOGqvrJyu3z3DaBu5BhXIMeWnijSRvd8irrrg9SHpQ1pH+BUK4H6Z9wL9yOxZJMTLU+Au86XHxow==}
+  /@rollup/plugin-commonjs@25.0.0(rollup@3.20.7):
+    resolution: {integrity: sha512-hoho2Kay9TZrLu0bnDsTTCaj4Npa+THk9snajP/XDNb9a9mmjTjh52EQM9sKl3HD1LsnihX7js+eA2sd2uKAhw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0
