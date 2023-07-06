@@ -47,7 +47,7 @@
     "husky": "^8.0.1",
     "jsdom": "^22.0.0",
     "lint-staged": "^13.0.3",
-    "prettier": "^2.6.0",
+    "prettier": "^3.0.0",
     "prettier-eslint": "^13.0.0",
     "rollup": "^3.2.2",
     "rollup-plugin-filesize": "^10.0.0",
