@@ -37,8 +37,8 @@ The all-purpose api to convert file to others.
 
 - Params
   - `file` **Blob | File** The file to convert.
-  - `options` **"arrayBuffer" | "dataUrl" | "text" | object**
-    - `options.type` **"arrayBuffer" | "dataUrl" | "text"**
+  - `options` **"arrayBuffer" | "dataUrl" | "objectUrl" | "text" | object**
+    - `options.type` **"arrayBuffer" | "dataUrl" | "objectUrl" | | "text"**
     - `options.encoding` **"string" | undefined** _Only used for "text"_
 - Returns
   - `Promise<any>` Returns the associated result according to the specified parameter.
@@ -69,6 +69,15 @@ Convert file to [dataUrl](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Basi
   - `file` **Blob | File** The file to convert.
   - Returns
     - `Promise<string>` Returns a dataUrl.
+
+### toObjectUrl
+
+Convert file to [objectUrl](https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL_static).
+
+- Params
+  - `file` **Blob | File** The file to convert.
+  - Returns
+    - `Promise<string>` Returns a objectUrl.
 
 ### toText
 

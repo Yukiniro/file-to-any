@@ -1,7 +1,7 @@
 import { isString, isUndefined, isBlob } from "bittydash";
 
 export type TargetFile = File | Blob;
-export type TypeOption = "arrayBuffer" | "dataUrl" | "text" | "binaryString" | "blob" | "blobUrl";
+export type TypeOption = "arrayBuffer" | "dataUrl" | "text" | "binaryString" | "blob" | "objectUrl";
 export type ObjOption = { type: TypeOption; encoding?: string };
 
 export type Options = TypeOption | ObjOption;
@@ -69,8 +69,8 @@ async function toAny(file: TargetFile, options?: Options, encoding?: string) {
     return await toBlob(file);
   }
 
-  if (type === "blobUrl") {
-    return await toBlobUrl(file);
+  if (type === "objectUrl") {
+    return await toObjectUrl(file);
   }
 
   return await transformWithFileReader(file, type as unknown as TypeOption, textEncoding);
@@ -83,8 +83,8 @@ async function toBlob(file: TargetFile): Promise<Blob> {
   return file.slice();
 }
 
-async function toBlobUrl(params: TargetFile): Promise<string> {
+async function toObjectUrl(params: TargetFile): Promise<string> {
   return URL.createObjectURL(params);
 }
 
-export { toArrayBuffer, toBinaryString, toDataUrl, toText, toBlob, toBlobUrl, toAny };
+export { toArrayBuffer, toBinaryString, toDataUrl, toText, toBlob, toObjectUrl, toAny };
