@@ -1,12 +1,7 @@
 import { isString, isUndefined, isBlob } from "bittydash";
 
 export type TargetFile = File | Blob;
-export type TypeOption =
-  | "arrayBuffer"
-  | "dataUrl"
-  | "text"
-  | "binaryString"
-  | "blob";
+export type TypeOption = "arrayBuffer" | "dataUrl" | "text" | "binaryString" | "blob" | "blobUrl";
 export type ObjOption = { type: TypeOption; encoding?: string };
 
 export type Options = TypeOption | ObjOption;
@@ -14,7 +9,7 @@ export type Options = TypeOption | ObjOption;
 async function transformWithFileReader(
   file: TargetFile,
   type: TypeOption,
-  encoding?: string
+  encoding?: string,
 ): Promise<string | ArrayBuffer> {
   return await new Promise((resolve, reject) => {
     const fileReader = new FileReader();
@@ -62,27 +57,23 @@ async function toText(file: TargetFile, encoding?: string): Promise<string> {
 }
 
 async function toAny(file: TargetFile, options?: Options, encoding?: string) {
-  const type = isUndefined(options)
-    ? "arrayBuffer"
-    : isString(options)
-    ? options
-    : (options as ObjOption).type;
+  const type = isUndefined(options) ? "arrayBuffer" : isString(options) ? options : (options as ObjOption).type;
 
   const textEncoding = isUndefined(options)
     ? undefined
     : isString(options)
-    ? encoding
-    : (options as ObjOption).encoding;
+      ? encoding
+      : (options as ObjOption).encoding;
 
   if (type === "blob") {
     return await toBlob(file);
   }
 
-  return await transformWithFileReader(
-    file,
-    type as unknown as TypeOption,
-    textEncoding
-  );
+  if (type === "blobUrl") {
+    return await toBlobUrl(file);
+  }
+
+  return await transformWithFileReader(file, type as unknown as TypeOption, textEncoding);
 }
 
 async function toBlob(file: TargetFile): Promise<Blob> {
@@ -92,4 +83,8 @@ async function toBlob(file: TargetFile): Promise<Blob> {
   return file.slice();
 }
 
-export { toArrayBuffer, toBinaryString, toDataUrl, toText, toBlob, toAny };
+async function toBlobUrl(params: TargetFile): Promise<string> {
+  return URL.createObjectURL(params);
+}
+
+export { toArrayBuffer, toBinaryString, toDataUrl, toText, toBlob, toBlobUrl, toAny };

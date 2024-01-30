@@ -12,8 +12,7 @@
     "test": "npx vitest",
     "test:run": "npx vitest run",
     "test:coverrage": "npx vitest --coverage",
-    "npm:publish": "npm run test:run && npm run build && npm publish",
-    "prepare": "npx husky install"
+    "npm:publish": "npm run test:run && npm run build && npm publish"
   },
   "keywords": [
     "file",
@@ -44,12 +43,9 @@
     "@yukiniro/eslint-config": "^0.0.8",
     "bittydash": "^0.7.0",
     "eslint": "^8.11.0",
-    "husky": "^9.0.0",
     "jsdom": "^24.0.0",
-    "lint-staged": "^15.0.0",
-    "prettier": "^3.0.0",
-    "prettier-eslint": "^16.0.0",
-    "rollup": "^4.0.0",
+    "prettier": "^3.2.4",
+    "rollup": "^4.9.6",
     "rollup-plugin-filesize": "^10.0.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "tslib": "^2.3.1",

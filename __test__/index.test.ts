@@ -1,14 +1,7 @@
 import { isArrayBuffer, isBlob, isString } from "bittydash";
 import validDataUrl from "valid-data-url";
 import { describe, test, expect } from "vitest";
-import {
-  toAny,
-  toArrayBuffer,
-  toDataUrl,
-  toText,
-  toBlob,
-  toBinaryString,
-} from "../src/index";
+import { toAny, toArrayBuffer, toDataUrl, toText, toBlob, toBinaryString } from "../src/index";
 const file = new File([], "test.mp3", { type: "audio/mpeg" });
 const textFile = new File(["hello world"], "hello.txt", { type: "txt" });
 
