@@ -43,7 +43,7 @@ devDependencies:
     version: 0.0.8(eslint-plugin-n@16.6.2)
   bittydash:
     specifier: ^0.7.0
-    version: 0.7.0
+    version: 0.7.1
   eslint:
     specifier: ^8.11.0
     version: 8.37.0
@@ -2600,8 +2600,8 @@ packages:
     engines: {node: '>=0.6'}
     dev: true
 
-  /bittydash@0.7.0:
-    resolution: {integrity: sha512-8NA8SNBBNBrlcTFt923SUZjpGGIsd7w4fjRzB25lK/zaorO5wMNCcR+PURZAYQwfhp88a2ILW40VD0EY9xogSQ==}
+  /bittydash@0.7.1:
+    resolution: {integrity: sha512-zsrD4PaWzuOc6TIahZaF081DrPTLIwm0s8im2oxU5oqnB2HdKKbMgFJb/AEqfb7sQY7sJC4zwdQSGxxc7shJFQ==}
     dev: true
 
   /boxen@5.1.2:
